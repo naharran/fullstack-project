@@ -1,0 +1,65 @@
+{
+    "users": [
+        {
+            "email": "Nahar1995@gmail.com",
+            "password": "$2b$10$3UJD54i4rF5JLjrJ9M4/ke9zKjMAzPJE.litYsd5.Wuy0pPnN0nd.",
+            "firstName": "Nahar",
+            "lastName": "Ran"
+        },
+        {
+            "email": "Nahar198995@gmail.com",
+            "password": "$2b$10$JH4/SHbpSe3emw3HrPYcaOG93rTXg8MM6xoZwYE7DqPkbQWuo1srm",
+            "firstName": "Nahar",
+            "lastName": "Ran"
+        },
+        {
+            "email": "mymail123@gmail.com",
+            "password": "$2b$10$9mWWQNxzF3yVYUTtt.0sZ.oNEfF/NJLKKeYmFw8wSVTNzg3QBkA0C",
+            "firstName": "Nahar",
+            "lastName": "Ran",
+            "id": "6750bb9f-a92f-4a97-bf4c-a2935257f166"
+        },
+        {
+            "email": "mymail4123@gmail.com",
+            "password": "$2b$10$9yKWGVv9woT2frRg4zk0tupVif/3fWPtuYbRS8n20jYi5jO2N7d9W",
+            "firstName": "Nahar",
+            "lastName": "Ran",
+            "id": "d33f69ea-1e0c-452a-b6b9-063c825e9892"
+        },
+        {
+            "email": "omer@gmail.com",
+            "password": "$2b$10$cSnQQjKb2doeGDcV1qvsHeiicl0xOOB7endVQ4Jv4Q299BQ6pEa5q",
+            "firstName": "Omer",
+            "lastName": "Hadad",
+            "id": "327aa34b-b165-4d5e-8271-f9626774da45"
+        },
+        {
+            "email": "moshe@gmail.com",
+            "password": "$2b$10$ZINs5pDSYdpZJfRw1ivRDu8ErUdUaG1qRwDfkBoVxZb9bj.KsGo2i",
+            "firstName": "Moshe",
+            "lastName": "Cohen",
+            "id": "c1cfb7bb-f99d-45f2-85d8-cf2ac40c3be5"
+        },
+        {
+            "email": "moshe1@gmail.com",
+            "password": "$2b$10$5mpcFHUjzRNzB2uOCNe6Me.CV.XtoBHE/2oVWv6rVkCkk1evBmij6",
+            "firstName": "Moshe",
+            "lastName": "Cohen",
+            "id": "6f23d11b-ffdb-4cf3-9206-6d13963a14e5"
+        },
+        {
+            "email": "moshe2@gmail.com",
+            "password": "$2b$10$p3g.3l1GEmGREpPp.u1YZu35PxgZTBljcXJN60hpiUddguM9VuIse",
+            "firstName": "Moshe",
+            "lastName": "Cohen",
+            "id": "0b603889-451b-4b28-8d55-da6653dcc8b1"
+        },
+        {
+            "email": "moshe3@gmail.com",
+            "password": "$2b$10$vcm.EO9gLI2mq50wHFQKMOtadW9cRSQU6tvyfPxkNmpK7g8Ge31lq",
+            "firstName": "Moshe",
+            "lastName": "Cohen",
+            "id": "bbad8753-f99d-48af-979e-1afa95f648c7"
+        }
+    ]
+}
