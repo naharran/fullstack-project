@@ -1,16 +1,8 @@
-import joi, { CustomValidator } from 'joi'
+import joi from 'joi'
 import { UserFormData } from '../../shared/types'
-import {isUserExists} from '../services/authService';
-const isUserExistValidator: CustomValidator = (value, helpers) => {
-    if(isUserExists(value)){
-       return helpers.error('any.emailExist') 
-    }   
-    return value
-}
 
 export const registerSchema = joi.object<UserFormData, true>({
-    email: joi.string().email().custom(isUserExistValidator).required().messages({
-        'string.email': 'My custom email error message',
+    email: joi.string().email().required().messages({
         'any.required': 'Please send an email thanks, Nahar',
         'any.emailExist': 'This user allready exists in the system'
     }),

@@ -1,7 +1,5 @@
-import joi, { CustomValidator } from 'joi'
+import joi from 'joi'
 import {LoginCardentials} from '../../shared/types'
-import { isUserExists } from '../services/authService'
-import bcrypt from 'bcrypt';
 
 
 const loginSchema = joi.object<LoginCardentials, true>({

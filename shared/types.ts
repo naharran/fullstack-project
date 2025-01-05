@@ -12,9 +12,29 @@ export interface User {
     lastName: string
     id: string
     password?: string
+    createdAt?: string | Date
 }
 
 export interface LoginCardentials{
     email: string
     password: string,
 }
+
+export interface Artist {
+    id: number;
+    name: string
+}
+
+export interface Artwork {
+    id: string; 
+    name: string;
+    description: string; 
+    price: number;
+    image?: string;
+    artistId: number;
+    category: string;
+    createdAt?: string | Date
+
+}
+export type ArtworkForm = Omit<Artwork, 'id' >;
+

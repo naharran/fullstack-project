@@ -1,15 +1,20 @@
 import { NextFunction, Request, Response } from "express";
-import registerSchema from "../validators/register";
+import registerSchema from "../schemas/register";
 import { ValidationError, ObjectSchema } from "joi";
-import loginSchema from "../validators/login";
+import loginSchema from "../schemas/login";
+import {artworkSchema, artworkEditSchema} from "../schemas/artwork";
 
 export enum SchemasEnum {
     register = 1,
     login,
+    artwork,
+    artworkEdit
 }
 const schemaDictionary : {[key in SchemasEnum]: ObjectSchema} = {
     [SchemasEnum.register]: registerSchema,
     [SchemasEnum.login]: loginSchema,
+    [SchemasEnum.artwork]: artworkSchema,
+    [SchemasEnum.artworkEdit]: artworkEditSchema,
 }
 
 export default (validator: SchemasEnum) => {

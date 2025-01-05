@@ -6,6 +6,7 @@ import cors from 'cors';
 import  { config } from 'dotenv'
 import { authenticateToken } from './middleware/auth';
 import AWS from 'aws-sdk';
+import artworksRouter from './routes/artworks';
 
 config();
 
@@ -25,6 +26,7 @@ AWS.config.update({
 });
 
 app.use('/api/auth', authRouter)
+app.use('/api/artworks',authenticateToken, artworksRouter)
 
 
 // app.get('/protected', authenticateToken, (req: Request, res: Response) =>{
