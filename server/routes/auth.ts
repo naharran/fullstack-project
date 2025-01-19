@@ -29,13 +29,12 @@ router.post('/register', validator(SchemasEnum.register) ,async(req: Request<{},
 })
 
 router.post('/login', validator(SchemasEnum.login), authenticate, async(req: Request<{}, {}, LoginCardentials>, res: Response) : Promise<any> => {
+    console.log(req.headers.origin)
     //@ts-ignore
     const authTokenData = req.user as User;
     const newJwt = jwt.sign(authTokenData, process.env.SECRET_KEY as string);
-    
-    res.cookie('myauthcookie', newJwt, {maxAge: 3600000, secure: false})
+    res.cookie('myauthcookie', newJwt, {maxAge: 3600000, secure: false, sameSite: false, path:'/' })
     res.status(200).end('Login Succesfully');
-
 })
 
 router.use('/',(req, res)=>{

@@ -34,7 +34,7 @@ export interface Artwork {
     artistId: number;
     category: string;
     createdAt?: string | Date
-
 }
 export type ArtworkForm = Omit<Artwork, 'id' >;
+export type ArtworkQuery = Partial<Pick<Artwork, 'name' | 'description'>>
 

@@ -19,11 +19,11 @@ router.post('/', validator(SchemasEnum.artwork), async(req,res) => {
     }
 })
 router.get('/', async(req,res) => {
-
     try{
-       const artworks = await getAllArtworks();
-       console.log(artworks);
-       res.status(200).json(artworks)
+        const { name } = req.query;
+        const artworks = await getAllArtworks({ name: name as string } );
+        console.log(artworks);
+        res.status(200).json(artworks)
     }
     catch(error){
         console.log(error)

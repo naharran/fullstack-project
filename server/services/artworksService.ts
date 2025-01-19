@@ -1,9 +1,14 @@
 import AWS from "aws-sdk";
-import { ArtworkForm } from "../../shared/types";
+import { ArtworkForm, ArtworkQuery } from "../../shared/types";
 import { v4 as uuidv4 } from 'uuid';
 
 type UpdateExpressionResult = {
     UpdateExpression: string;
+    ExpressionAttributeNames: Record<string, string>;
+    ExpressionAttributeValues: Record<string, any>;
+};
+type FilterExpressionResult = {
+    FilterExpression: string;
     ExpressionAttributeNames: Record<string, string>;
     ExpressionAttributeValues: Record<string, any>;
 };
@@ -22,9 +27,11 @@ export const saveArtwork = async (artForm: ArtworkForm) => {
     return fullArtWork
 }
 
-export const getAllArtworks = async () => {
+export const getAllArtworks = async ({name, description}: ArtworkQuery) => {
     const dynamoDB = new AWS.DynamoDB.DocumentClient()
-    return await dynamoDB.scan({ TableName: 'Artworks' }).promise()
+    const { FilterExpression, ExpressionAttributeNames, ExpressionAttributeValues } = generateFilterExpression({name, description})
+    const serachParams = FilterExpression? {FilterExpression, ExpressionAttributeNames, ExpressionAttributeValues} : null;
+    return await dynamoDB.scan({ TableName: 'Artworks', ...serachParams }).promise()
 }
 
 export const getArtworkById = async (id: string) => {
@@ -69,6 +76,31 @@ const generateUpdateExpression = (object: Record<string, any>): UpdateExpression
     };
 };
 
+const generateFilterExpression = (filters: Record<string, any>): FilterExpressionResult => {
+    let filterExpression = '';
+    const expressionAttributeNames: Record<string, string> = {};
+    const expressionAttributeValues: Record<string, any> = {};
+
+    Object.keys(filters).forEach((key, index) => {
+        if (filters[key] !== undefined) {
+            const placeholderName = `#${key}`;
+            const placeholderValue = `:${key}`;
+
+            // Use "contains" for partial matches (can be customized for specific filters)
+            filterExpression += `${index > 0 ? ' AND ' : ''}contains(${placeholderName}, ${placeholderValue})`;
+
+            // Map the attribute name and value placeholders
+            expressionAttributeNames[placeholderName] = key;
+            expressionAttributeValues[placeholderValue] = filters[key];
+        }
+    });
+
+    return {
+        FilterExpression: filterExpression,
+        ExpressionAttributeNames: expressionAttributeNames,
+        ExpressionAttributeValues: expressionAttributeValues,
+    };
+};
 
 
 export const editArtwork = async (id: string, updatedFields: Partial<ArtworkForm>) => {
